@@ -4,6 +4,7 @@ import './App.css';
 import Header from "./Header";
 import AddContact from "./AddContact";
 import ContactList from "./ContactList";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
   useEffect(() => {
     const retrieveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     // console.log(LOCAL_STORAGE_KEY);
-    alert(localStorage.getItem(LOCAL_STORAGE_KEY));
+    // alert(localStorage.getItem(LOCAL_STORAGE_KEY));
     if(retrieveContacts) setContacts(retrieveContacts);
   },[]);
 
@@ -35,9 +36,12 @@ function App() {
 
   return (
       <div className="ui container">
+        <Router>
         <Header />
         <AddContact addContactHandler = {addContactHandler}/>
         <ContactList contacts = {contacts} getContactId ={removeContactHandler}/>
+        </Router>
+
       </div>
   );
 };
