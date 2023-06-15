@@ -4,7 +4,7 @@ import './App.css';
 import Header from "./Header";
 import AddContact from "./AddContact";
 import ContactList from "./ContactList";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 
 function App() {
@@ -36,12 +36,16 @@ function App() {
 
   return (
       <div className="ui container">
-        <Router>
-        <Header />
-        <AddContact addContactHandler = {addContactHandler}/>
-        <ContactList contacts = {contacts} getContactId ={removeContactHandler}/>
-        </Router>
-
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path ="/" exact element={<ContactList/>} />
+            <Route path ="/add" element={<AddContact/>} />
+          </Routes>
+         
+        {/* <AddContact addContactHandler = {addContactHandler}/>
+        <ContactList contacts = {contacts} getContactId ={removeContactHandler}/> */}
+        </BrowserRouter>
       </div>
   );
 };
