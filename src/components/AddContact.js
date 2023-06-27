@@ -2,6 +2,7 @@
 import React from "react";
 
 
+
 class AddContact extends React.Component {
     state = {
         name: "",
@@ -16,6 +17,7 @@ class AddContact extends React.Component {
         }
         this.props.addContactHandler(this.state);
         this.setState({name:"", email: ""});
+        this.props.history.push("/");
         };
 
     render(){
@@ -44,7 +46,7 @@ class AddContact extends React.Component {
                     <button className ="ui button blue">Add</button>
                 </form>
             </div>
-        )
+        );
     };
 };
 

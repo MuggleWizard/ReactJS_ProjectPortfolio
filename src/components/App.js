@@ -5,7 +5,7 @@ import Header from "./Header";
 import AddContact from "./AddContact";
 import ContactList from "./ContactList";
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-
+import ContactDetail from "./ContactDetail";
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -39,8 +39,9 @@ function App() {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path ="/" exact element={<ContactList/>} />
-            <Route path ="/add" element={<AddContact/>} />
+            <Route path ="/" element={(<ContactList contacts = {contacts} getContactId ={removeContactHandler} exact/>)}/>
+            <Route path ="/add" element={(<AddContact addContactHandler = {addContactHandler} /> )}/>
+            <Route path="/contact/:id" element={ContactDetail}/>
           </Routes>
          
         {/* <AddContact addContactHandler = {addContactHandler}/>
