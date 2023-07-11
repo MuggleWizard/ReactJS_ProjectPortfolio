@@ -2,13 +2,15 @@ import React from "react";
 import user from "../images/user.png";
 import { Link } from "react-router-dom";
 
+
 const ContactCard = (props) => {
-    const {id, name, email} = props.contact;
+    
+   const {id, name, email} = props.contact;
     return(
         <div className ="item">
             <img className="ui avatar image" src={user} alt="user"/>
             <div className = "content">
-                <Link to={`/contact/${id}`}>
+                <Link to={{pathname:`/contact/${id}`, state:{contact: props}}}>
                     <div className ="header">{name}</div>
                     <div>{email}</div>
                 </Link>
@@ -23,3 +25,5 @@ const ContactCard = (props) => {
 };
 
 export default ContactCard;
+
+/* Have to adjust the LINK so that the site works correctly.  The tutorial has an older method verse using the current react-router-dom in my package */

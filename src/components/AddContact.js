@@ -1,5 +1,6 @@
 // import { render } from "@testing-library/react";
 import React from "react";
+// import { useNavigate } from 'react-router-dom';
 
 
 
@@ -8,16 +9,20 @@ class AddContact extends React.Component {
         name: "",
         email:"",
     };
-
+  
     add = (e) => {
+        
         e.preventDefault();
         if(this.state.name === "" || this.state.email === "") {
             alert("All the fields are mandatory!");
             return;
         }
-        this.props.addContactHandler(this.state);
         this.setState({name:"", email: ""});
-        this.props.history.push("/");
+        this.props.addContactHandler(this.state);
+        
+        console.log(this.state);
+        
+        // this.history.push("/");
         };
 
     render(){
