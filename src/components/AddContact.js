@@ -1,8 +1,7 @@
 // import { render } from "@testing-library/react";
 import React from "react";
+// import {Route} from "react-router-dom";
 import { Link } from "react-router-dom";
-
-
 
 
 class AddContact extends React.Component {
@@ -10,9 +9,9 @@ class AddContact extends React.Component {
         name: "",
         email:"",
     };
-  
-    add = (e) => {
+   
 
+    add = (e) => {
         e.preventDefault();
         if(this.state.name === "" || this.state.email === "") {
             alert("All the fields are mandatory!");
@@ -20,12 +19,17 @@ class AddContact extends React.Component {
         }
         this.setState({name:"", email: ""});
         this.props.addContactHandler(this.state);
+    
+        // const navigate = useNavigate();
+        // navigate("/");
         
-        console.log(this.state);
-        
-        // this.props.history.push("/");
       
-       
+    
+        console.log(this.state);
+        // <Navigate to="/" replace={true}/> Figuring out where to put this line so that after you add contact it redirects you to home page.
+        // this.props.history.push("/");
+        // this.props.addContactHandler(this.state).push("/");
+    //    <Route path="/" element={<AddContact animate={true}/>} />
         };
 
     render(){
@@ -51,17 +55,17 @@ class AddContact extends React.Component {
                         value={this.state.email}
                         onChange={ (e) => this.setState({email: e.target.value})}/>
                     </div>
-                    <Link to="/">
-                    <button className ="ui button blue" >Add</button>
+                    <Link to="/" state={{from: this.state}}>
+                         <button className ="ui button blue" >Add</button>
                     </Link>
                     
-
                 </form>
             </div>
-            
         );
     };
 };
+
+
 
 
 export default AddContact;
