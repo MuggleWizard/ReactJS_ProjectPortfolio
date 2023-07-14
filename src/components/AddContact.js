@@ -1,7 +1,7 @@
 // import { render } from "@testing-library/react";
 import React from "react";
 // import {Route} from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 
 class AddContact extends React.Component {
@@ -55,10 +55,7 @@ class AddContact extends React.Component {
                         value={this.state.email}
                         onChange={ (e) => this.setState({email: e.target.value})}/>
                     </div>
-                    <Link to="/" state={{from: this.state}}>
-                         <button className ="ui button blue" >Add</button>
-                    </Link>
-                    
+                    <button className ="ui button blue" >Add</button>
                 </form>
             </div>
         );
